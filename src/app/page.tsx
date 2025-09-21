@@ -26,7 +26,7 @@ export default async function Home() {
         <Link
           key={button.uid}
           href={`/post/${button.uid}`}
-          className="bg-[#69b5c9] text-white font-semibold text-lg py-3 rounded-xl shadow-md text-center hover:bg-[#5aa4b7] transition p-4 inline-block mt-4"
+          className="bg-[#69b5c9] text-white font-semibold text-lg py-3 rounded-xl shadow-md text-center hover:bg-[#5aa4b7] transition p-4 inline-block mt-4 min-w-[390px]"
         >
           {button.title}
         </Link>
