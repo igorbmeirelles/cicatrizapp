@@ -17,9 +17,9 @@ export default async function Home() {
       <Image
         src={Logo}
         alt="CicatrizApp Logo"
-        width={160}
-        height={160}
-        className="w-40 mx-auto"
+        width={240}
+        height={2410}
+        className="w-60 mx-auto"
       />
 
       {button_title.map((button) => (
