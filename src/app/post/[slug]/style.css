@@ -43,6 +43,9 @@
 .conteudo-artigo a {
   text-decoration: underline;
   color: hsl(217, 60%, 30%);
+
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Listas */
