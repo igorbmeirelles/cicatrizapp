@@ -22,15 +22,17 @@ export default async function Home() {
         className="w-60 mx-auto"
       />
 
-      {button_title.map((button) => (
-        <Link
-          key={button.uid}
-          href={`/post/${button.uid}`}
-          className="bg-[#69b5c9] text-white font-semibold text-lg py-3 rounded-xl shadow-md text-center hover:bg-[#5aa4b7] transition p-4 inline-block mt-4 min-w-[390px]"
-        >
-          {button.title}
-        </Link>
-      ))}
+      <div className="flex flex-col px-4 px-md-0">
+        {button_title.map((button) => (
+          <Link
+            key={button.uid}
+            href={`/post/${button.uid}`}
+            className="bg-[#69b5c9] text-white font-semibold text-lg py-3 rounded-xl shadow-md text-center hover:bg-[#5aa4b7] transition p-4 inline-block mt-4"
+          >
+            {button.title}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 }
