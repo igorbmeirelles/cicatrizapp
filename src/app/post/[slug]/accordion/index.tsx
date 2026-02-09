@@ -22,7 +22,7 @@ export function DefaultAccordion({ data }: IProps) {
           <AccordionTrigger className="text-left">{acc.title}</AccordionTrigger>
           <AccordionContent className="text-gray-600">
             <PrismicRichText field={acc.body} />
-          </AccordionContent>
+          </AccordionContent>{" "}
         </AccordionItem>
       ))}
     </Accordion>
