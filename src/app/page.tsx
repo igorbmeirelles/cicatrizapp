@@ -5,12 +5,24 @@ import Logo from "@/assets/images/image.png";
 
 export default async function Home() {
   const client = createClient();
-  const page = await client.getAllByType("pagina");
+  const pagePromise = [
+    client.getAllByType("pitemexpandindo"),
+    client.getAllByType("pagina"),
+  ];
 
-  const button_title = page.map((data) => ({
+  const [mainContent, pages] = await Promise.all(pagePromise);
+
+  const mainContentLabels = mainContent.map((i) => ({
+    title: i.data.titulo,
+    uid: i.uid,
+  }));
+
+  const pageLabels = pages.map((data) => ({
     title: data.data.titulo,
     uid: data.uid,
   }));
+
+  const button_title = mainContentLabels.concat(pageLabels);
 
   return (
     <div className="flex flex-col min-h-dvh items-center justify-center">
@@ -29,7 +41,7 @@ export default async function Home() {
             href={`/post/${button.uid}`}
             className="bg-[#69b5c9] text-white font-semibold text-lg py-3 rounded-xl shadow-md text-center hover:bg-[#5aa4b7] transition p-4 inline-block mt-4"
           >
-            {button.title}
+            {button.title?.toUpperCase()}
           </Link>
         ))}
       </div>

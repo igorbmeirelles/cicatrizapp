@@ -1,0 +1,35 @@
+{
+  "id": "item_expandindo",
+  "type": "SharedSlice",
+  "name": "ItemExpandindo",
+  "description": "ItemExpandindo",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "titulo": {
+          "type": "Text",
+          "config": {
+            "label": "titulo",
+            "placeholder": "titulo"
+          }
+        },
+        "texto": {
+          "type": "StructuredText",
+          "config": {
+            "label": "texto",
+            "placeholder": "texto",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

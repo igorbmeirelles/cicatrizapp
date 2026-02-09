@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"titulo": {
+				"__TYPE__": "FieldContent",
+				"value": "belt",
+				"type": "Text"
+			},
+			"texto": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "In ea ullamco in exercitation elit occaecat aute culpa ad reprehenderit esse exercitation."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

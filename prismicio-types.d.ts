@@ -138,7 +138,7 @@ interface PaginaDocumentData {
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/slices
    */
-  slices: prismic.SliceZone<PaginaDocumentDataSlicesSlice> /**
+  slices: prismic.SliceZone<PaginaDocumentDataSlicesSlice>; /**
    * Meta Title field in *pagina*
    *
    * - **Field Type**: Text
@@ -146,7 +146,7 @@ interface PaginaDocumentData {
    * - **API ID Path**: pagina.meta_title
    * - **Tab**: SEO & Metadata
    * - **Documentation**: https://prismic.io/docs/fields/text
-   */;
+   */
   meta_title: prismic.KeyTextField;
 
   /**
@@ -184,7 +184,152 @@ interface PaginaDocumentData {
 export type PaginaDocument<Lang extends string = string> =
   prismic.PrismicDocumentWithUID<Simplify<PaginaDocumentData>, "pagina", Lang>;
 
-export type AllDocumentTypes = ContentDocument | PaginaDocument;
+type PitemexpandindoDocumentDataSlicesSlice = ItemExpandindoSlice;
+
+/**
+ * Content for PItemExpandindo documents
+ */
+interface PitemexpandindoDocumentData {
+  /**
+   * titulo field in *PItemExpandindo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: titulo da pagina (aparece no botao)
+   * - **API ID Path**: pitemexpandindo.titulo
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * conteudo_inicial field in *PItemExpandindo*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: Conteudo introdutório
+   * - **API ID Path**: pitemexpandindo.conteudo_inicial
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  conteudo_inicial: prismic.RichTextField;
+
+  /**
+   * Slice Zone field in *PItemExpandindo*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pitemexpandindo.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/slices
+   */
+  slices: prismic.SliceZone<PitemexpandindoDocumentDataSlicesSlice>; /**
+   * Meta Title field in *PItemExpandindo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: pitemexpandindo.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *PItemExpandindo*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: pitemexpandindo.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *PItemExpandindo*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: pitemexpandindo.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/fields/image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * PItemExpandindo document from Prismic
+ *
+ * - **API ID**: `pitemexpandindo`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/content-modeling
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type PitemexpandindoDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<PitemexpandindoDocumentData>,
+    "pitemexpandindo",
+    Lang
+  >;
+
+export type AllDocumentTypes =
+  | ContentDocument
+  | PaginaDocument
+  | PitemexpandindoDocument;
+
+/**
+ * Primary content in *ItemExpandindo → Default → Primary*
+ */
+export interface ItemExpandindoSliceDefaultPrimary {
+  /**
+   * titulo field in *ItemExpandindo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: titulo
+   * - **API ID Path**: item_expandindo.default.primary.titulo
+   * - **Documentation**: https://prismic.io/docs/fields/text
+   */
+  titulo: prismic.KeyTextField;
+
+  /**
+   * texto field in *ItemExpandindo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: texto
+   * - **API ID Path**: item_expandindo.default.primary.texto
+   * - **Documentation**: https://prismic.io/docs/fields/rich-text
+   */
+  texto: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ItemExpandindo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ItemExpandindoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ItemExpandindoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ItemExpandindo*
+ */
+type ItemExpandindoSliceVariation = ItemExpandindoSliceDefault;
+
+/**
+ * ItemExpandindo Shared Slice
+ *
+ * - **API ID**: `item_expandindo`
+ * - **Description**: ItemExpandindo
+ * - **Documentation**: https://prismic.io/docs/slices
+ */
+export type ItemExpandindoSlice = prismic.SharedSlice<
+  "item_expandindo",
+  ItemExpandindoSliceVariation
+>;
 
 declare module "@prismicio/client" {
   interface CreateClient {
@@ -212,7 +357,14 @@ declare module "@prismicio/client" {
       PaginaDocument,
       PaginaDocumentData,
       PaginaDocumentDataSlicesSlice,
+      PitemexpandindoDocument,
+      PitemexpandindoDocumentData,
+      PitemexpandindoDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ItemExpandindoSlice,
+      ItemExpandindoSliceDefaultPrimary,
+      ItemExpandindoSliceVariation,
+      ItemExpandindoSliceDefault,
     };
   }
 }
